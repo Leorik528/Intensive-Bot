@@ -85,6 +85,7 @@ cd intensive-bot
 
 ```env
 TELEGRAM_TOKEN=your_bot_token
+# BOT_TOKEN=your_bot_token # алиас для обратной совместимости
 PAYMENT_PROVIDER_TOKEN=your_payment_provider_token
 DATABASE_URL=postgres://user:password@localhost:5432/intensive_bot?sslmode=disable
 ADMIN_HTTP_ADDR=:8080
@@ -114,7 +115,8 @@ go run ./cmd/bot
 
 | Переменная               | Описание                             |
 | ------------------------ | ------------------------------------ |
-| `TELEGRAM_TOKEN`         | Токен Telegram-бота                  |
+| `TELEGRAM_TOKEN`         | Токен Telegram-бота (рекомендуется)  |
+| `BOT_TOKEN`              | Алиас `TELEGRAM_TOKEN` (legacy)      |
 | `PAYMENT_PROVIDER_TOKEN` | Токен платежного провайдера Telegram |
 | `DATABASE_URL`           | PostgreSQL connection string         |
 | `ADMIN_HTTP_ADDR`        | Адрес admin HTTP сервера             |

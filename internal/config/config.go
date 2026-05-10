@@ -11,13 +11,19 @@ type Config struct {
 }
 
 func Load() (*Config, error) {
+	telegramToken := os.Getenv("TELEGRAM_TOKEN")
+	if telegramToken == "" {
+		// Backward compatibility: allow BOT_TOKEN as an alias.
+		telegramToken = os.Getenv("BOT_TOKEN")
+	}
+
 	cfg := &Config{
-		TelegramToken: os.Getenv("TELEGRAM_TOKEN"),
+		TelegramToken: telegramToken,
 		DatabaseURL:   os.Getenv("DATABASE_URL"),
 	}
 
 	if cfg.TelegramToken == "" {
-		return nil, fmt.Errorf("TELEGRAM_TOKEN is required")
+		return nil, fmt.Errorf("TELEGRAM_TOKEN (or BOT_TOKEN) is required")
 	}
 	if cfg.DatabaseURL == "" {
 		return nil, fmt.Errorf("DATABASE_URL is required")
