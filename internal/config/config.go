@@ -6,8 +6,11 @@ import (
 )
 
 type Config struct {
-	TelegramToken string
-	DatabaseURL   string
+	TelegramToken     string
+	DatabaseURL       string
+	YooKassaShopID    string
+	YooKassaSecretKey string
+	YooKassaReturnURL string
 }
 
 func Load() (*Config, error) {
@@ -18,8 +21,11 @@ func Load() (*Config, error) {
 	}
 
 	cfg := &Config{
-		TelegramToken: telegramToken,
-		DatabaseURL:   os.Getenv("DATABASE_URL"),
+		TelegramToken:     telegramToken,
+		DatabaseURL:       os.Getenv("DATABASE_URL"),
+		YooKassaShopID:    os.Getenv("YOOKASSA_SHOP_ID"),
+		YooKassaSecretKey: os.Getenv("YOOKASSA_SECRET_KEY"),
+		YooKassaReturnURL: os.Getenv("YOOKASSA_RETURN_URL"),
 	}
 
 	if cfg.TelegramToken == "" {
@@ -27,6 +33,12 @@ func Load() (*Config, error) {
 	}
 	if cfg.DatabaseURL == "" {
 		return nil, fmt.Errorf("DATABASE_URL is required")
+	}
+	if cfg.YooKassaShopID == "" {
+		return nil, fmt.Errorf("YOOKASSA_SHOP_ID is required")
+	}
+	if cfg.YooKassaSecretKey == "" {
+		return nil, fmt.Errorf("YOOKASSA_SECRET_KEY is required")
 	}
 
 	return cfg, nil

@@ -89,6 +89,9 @@ TELEGRAM_TOKEN=your_bot_token
 PAYMENT_PROVIDER_TOKEN=your_payment_provider_token
 DATABASE_URL=postgres://user:password@localhost:5432/intensive_bot?sslmode=disable
 ADMIN_HTTP_ADDR=:8080
+YOOKASSA_SHOP_ID=your_shop_id
+YOOKASSA_SECRET_KEY=your_secret_key
+YOOKASSA_RETURN_URL=https://t.me/your_bot_username
 ```
 
 ---
@@ -120,6 +123,9 @@ go run ./cmd/bot
 | `PAYMENT_PROVIDER_TOKEN` | Токен платежного провайдера Telegram |
 | `DATABASE_URL`           | PostgreSQL connection string         |
 | `ADMIN_HTTP_ADDR`        | Адрес admin HTTP сервера             |
+| `YOOKASSA_SHOP_ID`       | Shop ID ЮKassa                       |
+| `YOOKASSA_SECRET_KEY`    | Секретный ключ ЮKassa                |
+| `YOOKASSA_RETURN_URL`    | URL возврата после оплаты            |
 
 ---
 
